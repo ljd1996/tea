@@ -1,9 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>登录</title>
+    <title>注册</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,45 +21,63 @@
         <link rel="stylesheet" href="~/css/responsive.css">
     </environment>
 </head>
+
 <body>
 
 <section class="login-page section-padding">
     <div class="container">
         <div class="col-xs-3"></div>
         <div class="col-xs-6">
-            <div class="row">
-                <div class="single-check">
-                    <form action="login" method="post">
-                        <div class="single-input p-bottom50 clearfix">
+                <div class="single-input p-bottom50 clearfix">
+                    <form action="register" method="post">
+                        <div class="row">
                             <div class="col-xs-12">
                                 <div class="check-title">
-                                    <h3>登录</h3>
-                                    <h4>如果已有账号，请登录!</h4>
+                                    <h3>注册</h3>
                                 </div>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-12" th:if="${msg!=null}">
+                                <div class="check-title">
+                                    <h4 th:text="${msg}" style="color: #843534"></h4>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
                                 <label>用户名:</label>
                                 <div class="input-text">
                                     <input type="text" name="name" required="required"/>
                                 </div>
                             </div>
-                            <div class="col-xs-12">
+                            <div class="col-xs-6">
                                 <label>密码:</label>
                                 <div class="input-text">
                                     <input type="password" name="password" required="required"/>
                                 </div>
                             </div>
-                            <div class="col-xs-6">
-                                <div class="submit-text">
-                                    <input type="submit" name="submit" value="登录">
+                            <div class="col-xs-12">
+                                <label>手机号:</label>
+                                <div class="input-text">
+                                    <input type="text" name="phone" required="required"
+                                           oninput="value=value.replace(/[^\d]/g,'')"
+                                           maxlength="11"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12">
+                                <label>地址:</label>
+                                <div class="input-text">
+                                    <input type="text" name="address" required="required"
+                                           maxlength="100"/>
                                 </div>
                             </div>
                             <div class="col-xs-6">
-                                <a href="register_page">还没账号?去注册</a>
+                                <div class="submit-text">
+                                    <input type="submit" name="submit" value="注册">
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="login">已有账号?去登录</a>
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>

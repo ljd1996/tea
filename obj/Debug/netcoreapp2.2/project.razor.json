@@ -2779,6 +2779,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Account/ReleasePage.cshtml",
+      "TargetPath": "Views/Account/ReleasePage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/_ViewImports.cshtml",
       "TargetPath": "Views/_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2786,6 +2791,16 @@
     {
       "FilePath": "Views/Shared/Error.cshtml",
       "TargetPath": "Views/Shared/Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Account/RegisterPage.cshtml",
+      "TargetPath": "Views/Account/RegisterPage.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views/Account/Myself.cshtml",
+      "TargetPath": "Views/Account/Myself.cshtml",
       "FileKind": "mvc"
     },
     {

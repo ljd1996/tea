@@ -14,6 +14,8 @@ using tea.DataAccess.Base;
 using tea.DataAccess.Interface;
 using tea.DataAccess.Implement;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace tea
 {
@@ -37,8 +39,17 @@ namespace tea
             });
 
             services.AddDbContext<UserDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("TeaDbContext")));
+            services.AddDbContext<ProductDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("TeaDbContext")));
+            services.AddDbContext<OrderDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("TeaDbContext")));
+            services.AddDbContext<CartDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("TeaDbContext")));
             services.AddScoped<IUserDao, UserDao>();
-            
+            services.AddScoped<IProductDao, ProductDao>();
+            services.AddScoped<IOrderDao, OrderDao>();
+            services.AddScoped<ICartDao, CartDao>();
+
+            // 获取访问本地目录的权限
+            services.AddDirectoryBrowser();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -68,6 +79,12 @@ namespace tea
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"file/")),
+                RequestPath = new PathString("/file")
+            });
 
             app.UseMvc(routes =>
             {

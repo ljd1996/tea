@@ -29,3 +29,6 @@
 /home/hearing/WorkSpace/asp/tea/obj/Debug/netcoreapp2.2/tea.pdb
 /home/hearing/WorkSpace/asp/tea/obj/Debug/netcoreapp2.2/tea.csproj.CopyComplete
 /home/hearing/WorkSpace/asp/tea/obj/Debug/netcoreapp2.2/Razor/Views/Account/Login.g.cshtml.cs
+/home/hearing/WorkSpace/asp/tea/obj/Debug/netcoreapp2.2/Razor/Views/Account/RegisterPage.g.cshtml.cs
+/home/hearing/WorkSpace/asp/tea/obj/Debug/netcoreapp2.2/Razor/Views/Account/Myself.g.cshtml.cs
+/home/hearing/WorkSpace/asp/tea/obj/Debug/netcoreapp2.2/Razor/Views/Account/ReleasePage.g.cshtml.cs
