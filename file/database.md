@@ -5,14 +5,16 @@
 - password
 - phone
 - address
+- role
 
 ```sql
-CREATE TABLE `user` (
+CREATE TABLE `User` (
 `id`  int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `name`  varchar(255) NOT NULL,
 `password`  varchar(255) NOT NULL,
 `phone`  varchar(255) NOT NULL,
-`address`  varchar(255) NOT NULL
+`address`  varchar(255) NOT NULL,
+`role`  varchar(255) NOT NULL
 ) DEFAULT CHARACTER SET=utf8;
 ```
 
@@ -26,7 +28,7 @@ CREATE TABLE `user` (
 - status
 
 ```sql
-CREATE TABLE `product` (
+CREATE TABLE `Product` (
 `id`  int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `name`  varchar(255) NOT NULL,
 `price`  float NOT NULL,
@@ -45,7 +47,7 @@ CREATE TABLE `product` (
 - pro_id
 
 ```sql
-CREATE TABLE `orderlist` (
+CREATE TABLE `Orderlist` (
 `id`  int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `status`  int NOT NULL,
 `count`  int NOT NULL,
@@ -64,7 +66,7 @@ CONSTRAINT `order_pro_fk_id` FOREIGN KEY (`pro_id`) REFERENCES `product` (`id`) 
 - pro_id
 
 ```sql
-CREATE TABLE `cart` (
+CREATE TABLE `Cart` (
 `id`  int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 `count`  int NOT NULL,
 `buy_id`  int NOT NULL,

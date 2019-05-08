@@ -9,6 +9,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using tea.DataAccess.Base;
+using tea.DataAccess.Interface;
+using tea.DataAccess.Implement;
+using Microsoft.EntityFrameworkCore;
 
 namespace tea
 {
@@ -31,8 +36,18 @@ namespace tea
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            services.AddDbContext<UserDbContext>(d => d.UseMySQL(Configuration.GetConnectionString("TeaDbContext")));
+            services.AddScoped<IUserDao, UserDao>();
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+             .AddCookie(options =>
+             {
+                 options.LoginPath = new PathString("/login");
+                 options.LogoutPath = new PathString("/logout");
+                 options.AccessDeniedPath = new PathString("/login");
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +67,7 @@ namespace tea
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

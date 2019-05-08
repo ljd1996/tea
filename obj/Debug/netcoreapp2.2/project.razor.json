@@ -2789,6 +2789,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views/Account/Login.cshtml",
+      "TargetPath": "Views/Account/Login.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views/Shared/_CookieConsentPartial.cshtml",
       "TargetPath": "Views/Shared/_CookieConsentPartial.cshtml",
       "FileKind": "mvc"
