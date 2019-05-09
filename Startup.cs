@@ -80,12 +80,6 @@ namespace tea
             app.UseCookiePolicy();
             app.UseAuthentication();
 
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"file/")),
-                RequestPath = new PathString("/file")
-            });
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

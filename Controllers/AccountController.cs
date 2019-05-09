@@ -27,13 +27,6 @@ namespace tea.Controllers
             this.iProductDao = iProductDao;
         }
 
-        [Authorize(Roles = "admi")]
-        [HttpGet("test")]
-        public string Test()
-        {
-            return "test test";
-        }
-
         [AllowAnonymous]
         [HttpGet("login")]
         public IActionResult Login(string returnUrl = null)
@@ -101,12 +94,14 @@ namespace tea.Controllers
             return RedirectToAction("Login", "Account");
         }
 
+        [Authorize]
         [HttpGet("myself")]
         public IActionResult Myself()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost("updateUser")]
         public IActionResult UpdateUser(User user)
         {
@@ -114,19 +109,21 @@ namespace tea.Controllers
             return RedirectToAction("Logout", "Account");
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("release_page")]
         public IActionResult ReleasePage()
         {
             return View();
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("release")]
         public async Task<IActionResult> Release(Product product, Microsoft.AspNetCore.Http.IFormFile file)
         {
             TimeSpan cha = DateTime.Now - TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
             long t = (long)cha.TotalSeconds;
 
-            string fileName = Directory.GetCurrentDirectory() + "/file/img/" + t + file.FileName;
+            string fileName = Directory.GetCurrentDirectory() + "/wwwroot/file/img/" + t + file.FileName;
             using (var stream = new FileStream(fileName, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
