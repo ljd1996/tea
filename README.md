@@ -6,7 +6,7 @@
 
 # 环境配置
 
-- 下载MySQL数据库，新建名为asp的数据库，根据下方的建表语句建表
+- 下载MySQL数据库，用户名为`root`，密码为`123456`，新建名为asp的数据库，根据下方的建表语句建表
 - 下载asp.net core环境：net core sdk 2.2，下载地址：https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.203-windows-x64-installer ，具体在Window上的安装方法见官网：https://dotnet.microsoft.com/download/dotnet-core/2.2 。
 - 通过VS code或者其他IDE打开代码（VS）
 - 通过dotnet安装net core MySQL插件，命令：`dotnet add package  MySql.Data.EntityFrameworkCore`
